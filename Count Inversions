@@ -1,0 +1,38 @@
+  void merge(int arr1[], int arr2[], int low, int mid, int high, int temp[], int n, int m){
+        int left=low;
+        int right=mid;
+       // int temp=0;
+        long long k=low;
+        while(left<n && right<=high){
+            if(arr1[left]<=arr2[right]){
+                temp[k]=arr1[left];
+                left++;
+                k++;
+            }
+            else{
+              temp[k]=arr2[right];
+              k++;
+              right++;
+           // temp+=(mid-left+1);    
+            }
+        }
+        while(left<n){
+            temp[k]=arr1[left];
+            left++;
+            k++;
+        }
+        while(right<=high){
+            temp[k]=arr2[right];
+            right++;
+            k++;
+        }
+       // return temp;
+    }
+    int kthElement(int arr1[], int arr2[], int n, int m, int k)
+    {
+        long long N=n+m;
+        int temp[N];
+        int low=0; int high=m-1; int mid=0;
+        merge(arr1, arr2, low, mid, high,temp, n,m);
+        return temp[k-1];
+    }
