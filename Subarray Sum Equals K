@@ -1,0 +1,13 @@
+ int subarraySum(vector<int>& nums, int k) {
+       int p=0;
+       int ans=0;
+       unordered_map<int,int>mpp;
+       mpp[0]=1;
+       for(int i=0; i<nums.size(); i++){
+           p+=nums[i];
+           int r_sum=p-k;
+          ans+=mpp[r_sum];
+          mpp[p]++;
+       }
+     return ans;
+    }
