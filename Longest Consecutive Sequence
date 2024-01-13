@@ -1,0 +1,19 @@
+int longestConsecutive(vector<int>& nums) {
+        set<int>s1;
+        for(int num:nums){
+            s1.insert(num);
+        }
+        int longeststreak=0;
+        for(int num:nums){
+            if(!s1.count(num-1)){
+                int currentnum=num;
+                int currentstreak=1;
+                while(s1.count(currentnum+1)){
+                    currentnum+=1;
+                    currentstreak+=1;
+                }
+                longeststreak=max(longeststreak,currentstreak);
+            }
+        }
+        return longeststreak;
+    }
